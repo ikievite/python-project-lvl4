@@ -5,6 +5,7 @@ __pycache__/
 
 # Environments
 .venv/
+.env
 
 # Distribution / packaging
 dist/
@@ -14,5 +15,4 @@ dist/
 .coverage
 coverage.xml
 
-# Logfile
-logfile.log
+*.sqlite3
