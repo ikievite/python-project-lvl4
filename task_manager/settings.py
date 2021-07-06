@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['honest-moose-44171.herokuapp.com']
 
 INSTALLED_APPS = [
     'task_manager',
+    'bootstrap4',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
