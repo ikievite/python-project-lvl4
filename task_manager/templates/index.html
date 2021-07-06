@@ -1,1 +1,17 @@
-<h1>Hello, {{ who }}!!</h1>
+{# Load the tag library #}
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html>
+    <head>
+	{% bootstrap_css %}
+        {% if title %}
+            <title>Task Manager - {{ title }}</title>
+        {% else %}
+            <title>Task Manager</title>
+        {% endif %}
+    </head>
+    <body>
+	{% bootstrap_javascript jquery='full' %}
+        <h1>Hello, {{ who }}!!</h1>
+    </body>
+</html>
