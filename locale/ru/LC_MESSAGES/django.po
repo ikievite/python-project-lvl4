@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-13 09:57+0300\n"
+"POT-Creation-Date: 2021-07-14 09:31+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,14 +20,26 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
+#: task_manager/templates/base.html:17
+msgid "Task Manager"
+msgstr "Менеджер задач"
+
 #: task_manager/templates/base.html:24
 msgid "Users"
-msgstr ""
+msgstr "Пользователи"
+
+#: task_manager/templates/base.html:29
+msgid "Login"
+msgstr "Вход"
+
+#: task_manager/templates/base.html:32
+msgid "Register"
+msgstr "Регистрация"
 
 #: task_manager/templates/index.html:5
 msgid "This is a task manager app."
-msgstr ""
+msgstr "Менеджер задач"
 
 #: task_manager/views.py:7
 msgid "Hello, World"
-msgstr ""
+msgstr "Привет, Мир"
