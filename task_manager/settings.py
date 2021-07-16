@@ -42,15 +42,8 @@ LOGGING = {
         },
     },
     'root': {
-        'handlers': ['console'],
+        'handlers': ['console', 'file'],
         'level': 'WARNING',
-    },
-    'loggers': {
-        'tasks': {
-            'handlers': ['file'],
-            'level': 'WARNING',
-            'propagate': False,
-        },
     },
 }
 
