@@ -16,3 +16,4 @@ dist/
 coverage.xml
 
 *.sqlite3
+*.log
