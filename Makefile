@@ -10,7 +10,7 @@ package-install:
 task_manager:
 	poetry run gunicorn task_manager.wsgi
 
-task_manager_dev:
+run_dev_server:
 	poetry run python manage.py runserver
 
 lint:
