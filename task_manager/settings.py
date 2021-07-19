@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     'task_manager',
     'bootstrap4',
     'tasks.apps.TasksConfig',
+    'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
