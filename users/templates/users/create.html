@@ -1,0 +1,11 @@
+{% extends "tasks/base.html" %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% block content %}
+    <h1>{% trans "Sign Up" %}</h1>
+    <form role="form" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons submit='Sign Up' %}{% endbuttons %}
+    </form>
+{% endblock content %}
