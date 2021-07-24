@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm
+from .forms import UserCreateForm
 
 
 def users(request):
@@ -11,10 +11,10 @@ def users(request):
 
 def create(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserCreateForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('tasks-home')
     else:
-        form = UserCreationForm()
+        form = UserCreateForm()
     return render(request, 'users/create.html', {'form': form})
