@@ -14,7 +14,7 @@ def create(request):
         form = UserCreateForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('tasks-home')
+            return redirect('login')
     else:
         form = UserCreateForm()
     return render(request, 'users/create.html', {'form': form})
