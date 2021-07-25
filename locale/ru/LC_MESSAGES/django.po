@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-14 09:31+0300\n"
+"POT-Creation-Date: 2021-07-25 10:12+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,26 +20,59 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: task_manager/templates/base.html:17
+#: tasks/templates/tasks/base.html:17
 msgid "Task Manager"
 msgstr "Менеджер задач"
 
-#: task_manager/templates/base.html:24
+#: tasks/templates/tasks/base.html:24 users/templates/users/users.html:4
 msgid "Users"
 msgstr "Пользователи"
 
-#: task_manager/templates/base.html:29
+#: tasks/templates/tasks/base.html:30
+msgid "Logout"
+msgstr "Выход"
+
+#: tasks/templates/tasks/base.html:34
 msgid "Login"
 msgstr "Вход"
 
-#: task_manager/templates/base.html:32
-msgid "Register"
+#: tasks/templates/tasks/base.html:37 users/templates/users/create.html:5
+msgid "Sign Up"
 msgstr "Регистрация"
 
-#: task_manager/templates/index.html:5
+#: tasks/templates/tasks/index.html:5
 msgid "This is a task manager app."
 msgstr "Менеджер задач"
 
-#: task_manager/views.py:7
+#: tasks/views.py:12
 msgid "Hello, World"
 msgstr "Привет, Мир"
+
+#: users/templates/users/login.html:5
+msgid "Log In"
+msgstr "Вход"
+
+#: users/templates/users/logout.html:5
+msgid "You have been logged out"
+msgstr "Вы разлогинены"
+
+#: users/templates/users/users.html:9
+#, fuzzy
+#| msgid "Users"
+msgid "Username"
+msgstr "Пользователи"
+
+#: users/templates/users/users.html:10
+msgid "Full Name"
+msgstr "Полное имя"
+
+#: users/templates/users/users.html:11
+msgid "Data Joined"
+msgstr "Дата создания"
+
+#: users/views.py:19
+msgid "Your account has been created! You are now able to log in"
+msgstr "Ваш аккаунт успешно создан! Вы можете ввойти"
+
+#~ msgid "Register"
+#~ msgstr "Регистрация"
