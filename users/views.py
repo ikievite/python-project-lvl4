@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
 from django.contrib import messages
 from django.utils.translation import gettext as _
-from .forms import UserCreateForm
+from django.contrib.auth.decorators import login_required
+from .forms import UserCreateForm, UserUpdateForm
 
 
 def users(request):
@@ -21,3 +22,21 @@ def create(request):
     else:
         form = UserCreateForm()
     return render(request, 'users/create.html', {'form': form})
+
+
+@login_required
+def update(request):
+    if request.method == 'POST':
+        form = UserUpdateForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, _('Your account has been updated!'))
+            return redirect('update-user')
+    else:
+        form = UserUpdateForm(instance=request.user)
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'users/update.html', context)
