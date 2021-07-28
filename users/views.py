@@ -25,13 +25,13 @@ def create(request):
 
 
 @login_required
-def update(request):
+def update(request, username_id):
     if request.method == 'POST':
         form = UserUpdateForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
             messages.success(request, _('Your account has been updated!'))
-            return redirect('update-user')
+            return redirect('users')
     else:
         form = UserUpdateForm(instance=request.user)
 
