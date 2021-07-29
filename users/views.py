@@ -31,7 +31,7 @@ def update(request, username_id):
         if form.is_valid():
             form.save()
             messages.success(request, _('Your account has been updated!'))
-            return redirect('users')
+            return redirect('update-user', username_id=request.user.id)
     else:
         form = UserUpdateForm(instance=request.user)
 
