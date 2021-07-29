@@ -9,6 +9,7 @@
           <th scope="col">{% trans "Username" %}</th>
           <th scope="col">{% trans "Full Name" %}</th>
           <th scope="col">{% trans "Data Joined" %}</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -17,7 +18,11 @@
             <td scope="row">{{ user.id }}</td>
             <td>{{ user.username }}</td>
             <td>{{ user.first_name }} {{ user.last_name }}</td>
-            <td>{{ user.date_joined }}</td>
+            <td>
+              <a href="#">{% trans "Update" %}</a>
+	      <br>
+              <a href="#">{% trans "Delete" %}</a>
+	    </td>
           </tr>
         {% endfor %}
       </tbody>
