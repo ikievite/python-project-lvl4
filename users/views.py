@@ -33,8 +33,11 @@ def update(request, username_id):
             messages.success(request, _('Your account has been updated!'))
             return redirect('update-user', username_id=request.user.id)
     else:
-        form = UserUpdateForm(instance=request.user)
-
+        if username_id == request.user.id:
+            form = UserUpdateForm(instance=request.user)
+        else:
+            messages.error(request, _('You do not have permission to modify another user.'))
+            return redirect('users')
     context = {
         'form': form,
     }
