@@ -1,0 +1,11 @@
+{% extends "tasks/base.html" %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% block content %}
+    <h1>{% trans "Delete user profile" %}</h1>
+    <p>{% trans "Are you sure you want to delete the profile?" %}</p>
+    <form role="form" method="post">
+        {% csrf_token %}
+        {% bootstrap_button 'Yes, delete' button_type="submit" button_class="btn-danger" %}
+    </form>
+{% endblock content %}
