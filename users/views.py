@@ -3,6 +3,9 @@ from django.contrib.auth import get_user_model
 from django.contrib import messages
 from django.utils.translation import gettext as _
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic import DeleteView
+from django.contrib.auth.models import User
 from .forms import UserCreateForm, UserUpdateForm
 
 
@@ -43,3 +46,15 @@ def update(request, username_id):
     }
 
     return render(request, 'users/update.html', context)
+
+
+class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = User
+    template_name = 'users/delete.html'
+    success_url = '/'
+
+    def test_func(self):
+        user = self.get_object()
+        if self.request.user.id == user.id:
+            return True
+        return False
