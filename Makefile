@@ -14,7 +14,7 @@ run_dev_server:
 	poetry run python manage.py runserver
 
 lint:
-	poetry run flake8 page_loader
+	poetry run flake8 --exclude .venv
 
 test:
 	poetry run pytest --cov=page_loader --cov-report xml tests/	
