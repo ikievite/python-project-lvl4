@@ -17,6 +17,9 @@ lint:
 	poetry run flake8 --exclude .venv
 
 test:
-	poetry run pytest --cov=page_loader --cov-report xml tests/	
+	poetry run python manage.py test
 
-.PHONY: install build package-install task_manager task_manager_dev lint test
+shell:
+	poetry run python manage.py shell
+
+.PHONY: install build package-install task_manager run_dev_server lint test shell
