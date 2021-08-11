@@ -19,6 +19,9 @@ lint:
 test:
 	poetry run python manage.py test
 
+test-coverage-report-xml:
+	poetry run coverage xml
+
 shell:
 	poetry run python manage.py shell
 
