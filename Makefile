@@ -17,7 +17,7 @@ lint:
 	poetry run flake8 --exclude .venv
 
 test:
-	poetry run python manage.py test
+	poetry run coverage run --omit '.venv/*' manage.py test
 
 test-coverage-report-xml:
 	poetry run coverage xml
