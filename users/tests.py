@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
+from django.contrib.auth import get_user_model
 from django.contrib.auth import authenticate
 
 
@@ -11,14 +12,37 @@ class UsersViewTests(TestCase):
 
 class CreateViewTest(TestCase):
     def test_create_user(self):
-        create_user_url = '/users/create/'
-        user = {
+        user_data = {
             'username': 'test',
             'password1': '12test12',
             'password2': '12test12',
-            'first_name': 'fname',
-            'last_name': 'lname'
+            'first_name': 'John',
+            'last_name': 'Smith',
         }
-        response = self.client.post(create_user_url, user)
+        response = self.client.post(reverse('create-user'), user_data)
         user = authenticate(username='test', password='12test12')
+        self.assertTrue(user.is_authenticated)
+
+
+class UpdateViewTest(TestCase):
+    def setUp(self):
+        self.user = get_user_model().objects.create_user(
+            username='test',
+            password='12test12',
+            email='test@example.com',
+            first_name='John',
+            last_name='Smith',
+        )
+        self.user.save()
+
+
+    def test_update_user(self):
+        user_updated_data = {
+            'username': 'new_test',
+            'first_name': 'John2',
+            'last_name': 'Smith2',
+        }
+        self.client.login(username='test', password='12test12')
+        response = self.client.post(reverse('update-user', kwargs={'username_id':1}), user_updated_data)
+        user = authenticate(username='new_test', password='12test12')
         self.assertTrue(user.is_authenticated)
