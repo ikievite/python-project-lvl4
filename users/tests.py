@@ -43,6 +43,25 @@ class UpdateViewTest(TestCase):
             'last_name': 'Smith2',
         }
         self.client.login(username='test', password='12test12')
-        response = self.client.post(reverse('update-user', kwargs={'username_id':1}), user_updated_data)
+        response = self.client.post(reverse('update-user', kwargs={'username_id': 1}), user_updated_data)
         user = authenticate(username='new_test', password='12test12')
         self.assertTrue(user.is_authenticated)
+
+
+class UserDeleteViewTest(TestCase):
+    def setUp(self):
+        self.user = get_user_model().objects.create_user(
+            username='test',
+            password='12test12',
+            email='test@example.com',
+            first_name='John',
+            last_name='Smith',
+        )
+        self.user.save()
+
+
+    def test_delete_user(self):
+        self.client.login(username='test', password='12test12')
+        response = self.client.post(reverse('delete-user', kwargs={'pk': 1}))
+        user = authenticate(username='test', password='12test12')
+        self.assertTrue(user is None)
