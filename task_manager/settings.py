@@ -113,7 +113,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    },
 }
 
 
@@ -149,7 +149,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-LOCALE_PATHS = [BASE_DIR / "locale"]
+LOCALE_PATHS = [BASE_DIR / 'locale']
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
