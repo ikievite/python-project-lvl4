@@ -1,20 +1,19 @@
 from django.contrib import messages
-from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
-from django.views.generic import DeleteView, UpdateView
+from django.views.generic import DeleteView, ListView, UpdateView
 
 from .forms import UserCreateForm
 
 
-def users(request):
-    User = get_user_model()
-    users = User.objects.all()
-    return render(request, 'users/users.html', {'users': users})
+class UserListView(ListView):
+    model = User
+    template_name = 'users/users.html'
+    context_object_name = 'users'
 
 
 def create(request):
