@@ -1,7 +1,6 @@
+from django.contrib.auth import authenticate, get_user_model
 from django.test import TestCase
 from django.urls import reverse
-from django.contrib.auth import get_user_model
-from django.contrib.auth import authenticate
 
 
 class UsersViewTests(TestCase):
@@ -35,7 +34,6 @@ class UserUpdateViewTest(TestCase):
         )
         self.user.save()
 
-
     def test_update_user(self):
         user_updated_data = {
             'username': 'new_test',
@@ -58,7 +56,6 @@ class UserDeleteViewTest(TestCase):
             last_name='Smith',
         )
         self.user.save()
-
 
     def test_delete_user(self):
         self.client.login(username='test', password='12test12')
