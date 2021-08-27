@@ -9,7 +9,7 @@ class UsersViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
 
 
-class CreateViewTest(TestCase):
+class UserCreateViewTest(TestCase):
     def test_create_user(self):
         user_data = {
             'username': 'test',
