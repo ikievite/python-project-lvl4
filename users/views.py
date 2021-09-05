@@ -24,11 +24,12 @@ class UserCreateView(SuccessMessageMixin, CreateView):
     success_message = _('Your account has been created! You are now able to log in')
 
 
-class UserUpdateView(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class UserUpdateView(SuccessMessageMixin, UserPassesTestMixin, UpdateView):
     model = User
     template_name = 'users/update.html'
     success_url = reverse_lazy('users')
-    # _('You do not have permission to modify another user.')
+    missed_rights_message = _('You do not have permission to modify another user.')
+    need_loging_message = _('You are not authorized! Please sign in.')
     success_message = _('Your account has been updated!')
     fields = ['first_name', 'last_name', 'username']
 
@@ -37,6 +38,13 @@ class UserUpdateView(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixi
         if self.request.user.id == user.id:
             return True
         return False
+
+    def handle_no_permission(self):
+        if self.request.user.is_authenticated:
+            messages.error(self.request, self.missed_rights_message)
+            return redirect('users')
+        messages.error(self.request, self.need_loging_message)
+        return redirect('login')
 
 
 class UserDeleteView(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin, DeleteView):
