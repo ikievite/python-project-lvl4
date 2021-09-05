@@ -39,6 +39,8 @@ class UserUpdateViewTest(TestCase):
             'username': 'new_test',
             'first_name': 'John2',
             'last_name': 'Smith2',
+            'password1': '12test12',
+            'password2': '12test12',
         }
         self.client.login(username='test', password='12test12')
         response = self.client.post(reverse('update-user', kwargs={'pk': 1}), user_updated_data)
