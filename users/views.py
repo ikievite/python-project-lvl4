@@ -35,9 +35,7 @@ class UserUpdateView(SuccessMessageMixin, UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         user = self.get_object()
-        if self.request.user.id == user.id:
-            return True
-        return False
+        return self.request.user.id == user.id
 
     def handle_no_permission(self):
         if self.request.user.is_authenticated:
@@ -55,6 +53,4 @@ class UserDeleteView(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixi
 
     def test_func(self):
         user = self.get_object()
-        if self.request.user.id == user.id:
-            return True
-        return False
+        return self.request.user.id == user.id
