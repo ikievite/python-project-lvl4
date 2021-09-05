@@ -2,12 +2,12 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
-from django.views.generic import DeleteView, ListView, UpdateView, CreateView
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
-from .forms import UserCreateForm
+from .forms import UserCreateForm  # noqa: WPS300. Ignore local folder import
 
 
 class UserListView(ListView):
