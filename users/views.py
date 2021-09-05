@@ -24,7 +24,7 @@ class UserCreateView(SuccessMessageMixin, CreateView):
     success_message = _('Your account has been created! You are now able to log in')
 
 
-class UserUpdateView(SuccessMessageMixin, UserPassesTestMixin, UpdateView):
+class UserUpdateView(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = User
     template_name = 'users/update.html'
     success_url = reverse_lazy('users')
