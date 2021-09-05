@@ -31,7 +31,7 @@ class UserUpdateView(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixi
     missed_rights_message = _('You do not have permission to modify another user.')
     need_loging_message = _('You are not authorized! Please sign in.')
     success_message = _('Your account has been updated!')
-    fields = ['first_name', 'last_name', 'username']
+    form_class = UserCreateForm
 
     def test_func(self):
         user = self.get_object()
