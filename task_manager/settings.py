@@ -122,7 +122,6 @@ DATABASES = {
 }
 
 DATABASES['default'] = dj_database_url.config(
-    os.environ.get('DATABASE_URL'),
     conn_max_age=DB_CONN_MAX_AGE,
 )
 
