@@ -59,7 +59,7 @@ LOGGING = {
 SECRET_KEY = 'django-insecure-cf$x$1!=9kfx_h8qetpv$9n0use0k0$c+^@k(ar$=9ip*9@qms'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = ['honest-moose-44171.herokuapp.com', '127.0.0.1']
 
