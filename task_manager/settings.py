@@ -16,8 +16,6 @@ from pathlib import Path
 from dotenv import load_dotenv
 import dj_database_url
 
-DB_CONN_MAX_AGE = 600
-
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
