@@ -1,0 +1,29 @@
+{% extends "tasks/base.html" %}
+{% load i18n %}
+{% block content %}
+    <h1>{% trans "Statuses" %}</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">{% trans "Name" %}</th>
+          <th scope="col">{% trans "Date of Creation" %}</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for status in statuses %}
+          <tr>
+            <td scope="row">{{ status.id }}</td>
+            <td>{{ status.name }}</td>
+	    <td>{{ status.date_created }}</td>
+            <td>
+              <a href="#">{% trans "Update" %}</a>
+	      <br>
+              <a href="">{% trans "Delete" %}</a>
+	    </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock content %}
