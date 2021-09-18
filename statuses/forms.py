@@ -4,7 +4,6 @@ from django.forms import ModelForm
 
 
 class StatusCreateForm(ModelForm):
-    name = forms.CharField()
 
     class Meta:
         model = Status
