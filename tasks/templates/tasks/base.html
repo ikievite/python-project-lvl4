@@ -22,7 +22,12 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'users' %}">{% trans "Users" %}</a>
-                    </li>
+		    </li>
+		    {% if user.is_authenticated %}
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'statuses' %}">{% trans "Statuses" %}</a>
+                      </li>
+                    {% endif %}
                 </ul>
                 <ul class="navbar-nav">
                   {% if user.is_authenticated %}
