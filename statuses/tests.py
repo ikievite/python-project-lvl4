@@ -29,3 +29,22 @@ class StatusListViewTest(TestCase):
         login = self.client.login(username='testuser', password='superpass')
         response = self.client.get(reverse('statuses'))
         self.assertTemplateUsed(response, 'statuses/statuses.html')
+
+
+class StatusCreateViewTest(TestCase):
+    def setUp(self):
+        test_user = User.objects.create_user(
+            username='testuser',
+            password='superpass',
+        )
+        test_user.save()
+
+    def test_create_status(self):
+        login = self.client.login(username='testuser', password='superpass')
+        response = self.client.post(reverse('create-status'), {'name': 'test_status2'})
+        self.assertEqual(response.status_code, 302)
+
+    def test_uses_correct_template(self):
+        login = self.client.login(username='testuser', password='superpass')
+        response = self.client.get(reverse('create-status'))
+        self.assertTemplateUsed(response, 'statuses/create.html')
