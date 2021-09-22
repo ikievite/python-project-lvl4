@@ -4,7 +4,8 @@ from django.urls import reverse
 
 
 class StatusListViewTest(TestCase):
-    def setUp(self):
+    @classmethod
+    def setUpTestData(cls):
         test_user = User.objects.create_user(
             username='testuser',
             password='superpass',
@@ -32,7 +33,8 @@ class StatusListViewTest(TestCase):
 
 
 class StatusCreateViewTest(TestCase):
-    def setUp(self):
+    @classmethod
+    def setUpTestData(cls):
         test_user = User.objects.create_user(
             username='testuser',
             password='superpass',

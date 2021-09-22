@@ -24,15 +24,16 @@ class UserCreateViewTest(TestCase):
 
 
 class UserUpdateViewTest(TestCase):
-    def setUp(self):
-        self.user = get_user_model().objects.create_user(
+    @classmethod
+    def setUpTestData(cls):
+        user = get_user_model().objects.create_user(
             username='test',
             password='12test12',
             email='test@example.com',
             first_name='John',
             last_name='Smith',
         )
-        self.user.save()
+        user.save()
 
     def test_update_user(self):
         user_updated_data = {
@@ -49,15 +50,16 @@ class UserUpdateViewTest(TestCase):
 
 
 class UserDeleteViewTest(TestCase):
-    def setUp(self):
-        self.user = get_user_model().objects.create_user(
+    @classmethod
+    def setUpTestData(cls):
+        user = get_user_model().objects.create_user(
             username='test',
             password='12test12',
             email='test@example.com',
             first_name='John',
             last_name='Smith',
         )
-        self.user.save()
+        user.save()
 
     def test_delete_user(self):
         self.client.login(username='test', password='12test12')
