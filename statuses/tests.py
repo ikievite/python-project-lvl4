@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
+from statuses.models import Status
 
 
 class StatusListViewTest(TestCase):
@@ -50,3 +51,23 @@ class StatusCreateViewTest(TestCase):
         login = self.client.login(username='testuser', password='superpass')
         response = self.client.get(reverse('create-status'))
         self.assertTemplateUsed(response, 'statuses/create.html')
+
+
+class StatusUpdateViewTest(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        test_user = User.objects.create_user(
+            username='testuser',
+            password='superpass',
+        )
+        test_user.save()
+        new_status = Status.objects.create(name='another_status')
+        new_status.save()
+
+    def test_update_status(self):
+        login = self.client.login(username='testuser', password='superpass')
+        response = self.client.post(
+            reverse('update-status', kwargs={'pk': 1}),
+            {'name': 'yet_another_status'},
+        )
+        self.assertEqual(Status.objects.get(pk=1).name, 'yet_another_status')
