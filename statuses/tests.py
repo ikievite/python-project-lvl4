@@ -71,3 +71,8 @@ class StatusUpdateViewTest(TestCase):
             {'name': 'yet_another_status'},
         )
         self.assertEqual(Status.objects.get(pk=1).name, 'yet_another_status')
+
+    def test_uses_correct_template(self):
+        login = self.client.login(username='testuser', password='superpass')
+        response = self.client.get(reverse('update-status', kwargs={'pk': 1}), {'name': 'yet_another_status'})
+        self.assertTemplateUsed(response, 'statuses/update.html')
