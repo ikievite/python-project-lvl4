@@ -44,8 +44,10 @@ class StatusCreateViewTest(TestCase):
 
     def test_create_status(self):
         login = self.client.login(username='testuser', password='superpass')
-        response = self.client.post(reverse('create-status'), {'name': 'test_status2'})
+        response = self.client.post(reverse('create-status'), {'name': 'test_status'})
+        created_status = Status.objects.get(id=1).name
         self.assertEqual(response.status_code, 302)
+        self.assertEqual(created_status, 'test_status')
 
     def test_uses_correct_template(self):
         login = self.client.login(username='testuser', password='superpass')
