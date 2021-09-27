@@ -78,3 +78,28 @@ class StatusUpdateViewTest(TestCase):
         login = self.client.login(username='testuser', password='superpass')
         response = self.client.get(reverse('update-status', kwargs={'pk': 1}), {'name': 'yet_another_status'})
         self.assertTemplateUsed(response, 'statuses/update.html')
+
+
+class StatusDeleteViewTest(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        test_user = User.objects.create_user(
+            username='testuser',
+            password='superpass',
+        )
+        test_user.save()
+        new_status = Status.objects.create(name='another_status')
+        new_status.save()
+
+    def test_delete_status(self):
+        login = self.client.login(username='testuser', password='superpass')
+        response = self.client.post(
+            reverse('delete-status', kwargs={'pk': 1}),
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, '/statuses/')
+
+    def test_is_delete_view_uses_correct_template(self):
+        login = self.client.login(username='testuser', password='superpass')
+        response = self.client.get(reverse('delete-status', kwargs={'pk': 1}))
+        self.assertTemplateUsed(response, 'statuses/delete.html')
