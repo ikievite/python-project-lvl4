@@ -69,4 +69,3 @@ class StatusDeleteView(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
             return redirect('statuses')
         messages.error(self.request, self.need_loging_message)
         return redirect('login')
-
