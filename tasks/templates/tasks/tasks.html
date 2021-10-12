@@ -1,0 +1,36 @@
+{% extends "tasks/base.html" %}
+{% load i18n %}
+{% block content %}
+    <h1>{% trans "Tasks" %}</h1>
+    <a class="nav-link" href="#">{% trans "Create task" %}</a>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">{% trans "Name" %}</th>
+          <th scope="col">{% trans "Status" %}</th>
+          <th scope="col">{% trans "Author" %}</th>
+          <th scope="col">{% trans "Executor" %}</th>
+          <th scope="col">{% trans "Date created" %}</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for task in tasks %}
+          <tr>
+            <td scope="row">{{ status.id }}</td>
+            <td>{{ task.name }}</td>
+	    <td>{{ task.status }}</td>
+            <td>{{ task.author }}</td>
+            <td>{{ task.executor }}</td>
+            <td>{{ task.date_created }}</td>
+            <td>
+              <a href="#">{% trans "Update" %}</a>
+	      <br>
+              <a href="#">{% trans "Delete" %}</a>
+	    </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock content %}
