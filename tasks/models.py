@@ -7,7 +7,7 @@ from statuses.models import Status
 class Task(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=500, blank=True)
-    author = models.ForeignKey(User, on_delete=models.PROTECT, related_name='task_author')
+    creator = models.ForeignKey(User, on_delete=models.PROTECT, related_name='task_author', null=True)
     executor = models.ForeignKey(
         User,
         on_delete=models.PROTECT,
