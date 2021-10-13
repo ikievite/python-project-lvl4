@@ -2,14 +2,14 @@
 {% load i18n %}
 {% block content %}
     <h1>{% trans "Tasks" %}</h1>
-    <a class="nav-link" href="#">{% trans "Create task" %}</a>
+    <a class="nav-link" href="{% url 'create-task' %}">{% trans "Create task" %}</a>
     <table class="table">
       <thead>
         <tr>
           <th scope="col">ID</th>
           <th scope="col">{% trans "Name" %}</th>
           <th scope="col">{% trans "Status" %}</th>
-          <th scope="col">{% trans "Author" %}</th>
+          <th scope="col">{% trans "Creator" %}</th>
           <th scope="col">{% trans "Executor" %}</th>
           <th scope="col">{% trans "Date created" %}</th>
           <th scope="col"></th>
@@ -18,10 +18,10 @@
       <tbody>
         {% for task in tasks %}
           <tr>
-            <td scope="row">{{ status.id }}</td>
+            <td scope="row">{{ task.id }}</td>
             <td>{{ task.name }}</td>
 	    <td>{{ task.status }}</td>
-            <td>{{ task.author }}</td>
+            <td>{{ task.creator }}</td>
             <td>{{ task.executor }}</td>
             <td>{{ task.date_created }}</td>
             <td>
